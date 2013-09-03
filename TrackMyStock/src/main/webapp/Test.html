@@ -1,0 +1,165 @@
+
+<!-- saved from url=(0053)http://localhost:8080/trackmystock/selectAccount.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script type="text/javascript"
+	src="./Select Account_files/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+	function accountSelectionChange(object) {
+		console.log(object.options[object.selectedIndex].value);
+		console.log(object.options[object.selectedIndex].text);
+		
+		$.ajax({
+			type : 'POST',
+			url : 'viewAccountStocks.html', 
+			data : 'accountId=' + object.options[object.selectedIndex].value,
+			dataType: 'html',				
+			success: function(msg) { 
+                // alert( "Data retrieved: " + msg );
+                
+				document.getElementById("myDiv").innerHTML = msg;
+            },
+            error: function (jqxhr, status, errorThrown) {
+                alert("Failure, Unable to recieve content")
+                alert(jqxhr.responseText);
+            }
+		});
+	}
+
+
+	function WorkedaccountSelectionChange(object) {
+		console.log(object.optsions[object.selectedIndex].value);
+		console.log(object.options[object.selectedIndex].text);
+		
+		
+		// configure the XMLHttpRequest
+		var xmlhttp;
+		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else {// code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		
+		// setup the handling of the return value from the server call
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+			}
+		}
+		
+		xmlhttp.open("GET", "viewAccountStocks.html", true);
+		xmlhttp.send();
+	}
+	
+	function OldAccountSelectionChange(object) {
+		console.log(object.options[object.selectedIndex].value);
+		console.log(object.options[object.selectedIndex].text);
+
+		// configure the XMLHttpRequest
+		var xmlhttp;
+		if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else {// code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		// setup the handling of the return value from the server call
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+			}
+		}
+		
+		// make the server call
+//		xmlhttp.open("POST", "viewAccountStocks.html", true);
+//		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+//		xmlhttp.send("fname=Henry&lname=Ford");
+		
+		xmlhttp.open("GET", "viewAccountStocks.html", true);
+		xmlhttp.send();
+	}
+
+</script>
+
+
+<title>Select Account</title>
+<link href="./Select Account_files/main.css" rel="stylesheet"
+	type="text/css" media="screen">
+</head>
+<body style="">
+
+	<br>
+
+	<div class="sectionHeading">Select an Account</div>
+
+
+	<table>
+		<tbody>
+			<tr>
+				<td><select id="selectAccount" class="dropdownlist"
+					name="selectedAccount" onchange="accountSelectionChange(this)">
+						<option value="" disabled="" selected="" style="display: none;">Select
+							an Account</option>
+
+						<option value="1">Silvio Vanguard IRA</option>
+
+						<option value="2">Angela TWTC 401K</option>
+
+						<option value="3">Silvio GWRS 401K</option>
+
+						<option value="4">William College Invest</option>
+
+				</select></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p class="serverTime">The time on the server is July 21, 2013
+		11:02:03 AM MDT.</p>
+
+	<div id="myDiv">
+		<!--?xml version="1.0" encoding="ISO-8859-1" ?-->
+
+		<title>View Account Stocks</title>
+		<link href="./Select Account_files/main.css" rel="stylesheet"
+			type="text/css" media="screen">
+
+		<div class="sectionHeading">Select the stocks to view</div>
+
+		<table id="ownedStocks">
+			<tbody>
+				<tr>
+					<td><input type="checkbox"
+						onchange="alert(&#39;onchange&#39;);"> American Funds
+						EuroPacific Gr A</td>
+					<td><input type="checkbox"
+						onchange="alert(&#39;onchange&#39;);"> Buffalo Small Cap</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"
+						onchange="alert(&#39;onchange&#39;);"> Dodge &amp; Cox
+						Stock</td>
+					<td><input type="checkbox"
+						onchange="alert(&#39;onchange&#39;);"> American Funds
+						Growth Fund of Amer R4</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox"
+						onchange="alert(&#39;onchange&#39;);"> American Funds
+						Capital World G/I R4</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p class="serverTime">The time on the server is July 21, 2013
+			11:02:06 AM MDT.</p>
+
+		<div id="stockGraph">
+			<p class="textToBeReplaceByAjaxCall">display the stock graphs
+				here</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+@CHARSET "ISO-8859-1";
+
+body {
+    /* background-color: #A9D0F5; */
+	/* background-color: #E0ECF8; */
+	background-color: #CEE3F6;
+}
+
+
+nav{
+	margin: auto;
+	width: 750px;
+}
+
+
+.instruction {
+	color:  blue;
+	font-style:  italic;
+}
+
+
+.sectionHeading {
+	margin-bottom: 10px;
+	width: 95%;
+	border-style: ridge;
+	border: 1px solid black;
+	border-color: gray;
+	padding-left: 5px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	border-collapse: collapse;
+	font-family: sans-serif;
+	color:  blue;
+	font-style:  italic;
+	background-color: silver;
+}
+
+
+table#ownedStocks {
+	margin-left: 10px;
+	margin-right: 90%;
+	margin-bottom: 5px;
+}
+	
+table#ownedStocks, th {
+	color:  navy;
+	border-style: ridge;
+	border-color: gray;
+	padding-top: 5px;
+	padding-left: 5px;
+	padding-bottom: 50px;
+	padding-right: 1px;
+	border-collapse: collapse;
+	font-family: sans-serif;
+	width: 95%;
+}
+
+
+table#ownedStocks, tr {
+	padding-bottom: 1px;
+}
+
+table#ownedStocks, td {
+	padding-left: 10px;
+}
+
+
+.textToBeReplaceByAjaxCall {
+	color:  black;
+	font-style:  italic;
+	font-size: xx-small; 	
+}
+
+.serverTime {
+	color:  blue;
+	font-style:  italic;
+	font-size: xx-small; 	
+}
