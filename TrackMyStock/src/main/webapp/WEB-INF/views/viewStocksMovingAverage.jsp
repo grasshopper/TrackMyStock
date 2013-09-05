@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="resources/javascript/jquery/2.0.3/jquery.js"></script>
 
 	<title>Stock Graph</title>
 	<link href="resources/css/main.css" rel="stylesheet" type="text/css" media="screen" />
@@ -29,6 +29,37 @@
 			</option>
 		</c:forEach>
 	</select>
+
+	<c:set var="historyAllSelectedSecurites" value="${MovingAveragesForAllSelectedSecurities}" />
+	<c:if test="${historyAllSelectedSecurites != null}">
+		<c:set var="historyFromDate" value="${historyAllSelectedSecurites.historyFromDate}" />
+		<c:set var="historyToDate" value="${historyAllSelectedSecurites.historyToDate}" />
+
+		<BR />
+		historyFromDate: <c:out value="${historyFromDate}" />
+		<BR />
+		historyToDate: <c:out value="${historyToDate}" />
+		<BR />
+		
+		<c:set var="securityIdList" value="${historyAllSelectedSecurites.securityIdList}"></c:set>
+		securityIdList: <c:out value="${securityIdList}" />
+		<BR />
+
+		<c:forEach var="security" items="${securityIdList}">
+			security: <c:out value="${security}" />
+			<BR />
+		
+			<c:set var="securityPriceHistory" value="${historyAllSelectedSecurites.getSecurityPriceHistory(security)}" />
+			securityPriceHistory: <c:out value="${securityPriceHistory}" />
+			<BR />
+			<BR />
+
+			<script type="text/javascript">
+				drawAChart();
+			</script>
+			
+		</c:forEach>
+	</c:if>
 
 	<div id="container" style="width:100%; height:400px;"></div>
 

@@ -5,8 +5,7 @@
 	
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.js"></script>
-
+<script type="text/javascript" src="resources/javascript/jquery/2.0.3/jquery.js"></script>
 
 <head>
 	<title>View Account Stocks</title>
